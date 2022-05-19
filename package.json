@@ -6,9 +6,8 @@
   "scripts": {
     "build": "tsc",
     "postinstall": "yarn run build",
-    "start": "yarn run build && node .",
-    "dev": "concurrently 'tsc -w' 'postcss -w ./public/main.css -o ./public/style.css' 'nodemon .'",
-    "test": "jest"
+    "start": "node .",
+    "dev": "concurrently 'tsc -w' 'postcss -w ./public/main.css -o ./public/style.css' 'nodemon .'"
   },
   "keywords": [],
   "author": "",
