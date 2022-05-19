@@ -1,0 +1,33 @@
+extends base
+
+block vars
+	- var title = "Add new message"
+
+block main-body
+	div(class="bg-[#eee] rounded-lg p-10 mt-10" style="border: solid 1px #CACED0; min-height: 524px;")
+		a(href="/home" class="flex items-center text-zinc-500 cursor-pointer")
+			svg(xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor")
+				path(fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd")
+			| Back
+		div(class="sm:w-full text-left m-auto lg:m-0")
+			h1(class="text-3xl md:text-4xl font-bold mb-3") Add new message
+			div(class="my-2 text-red-500").
+				#{error}
+			div(class="w-full")
+				form(action="/create" method="post")
+					div(class="mt-2")
+						label(for="title" class="block text-sm font-medium leading-8 text-gray-700") Title
+						div(class="mt-1 rounded-md")
+							input(type="text" placeholder="Title" name="title" autofocus="" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5")
+					div(class="mt-2")
+						label(for="description" class="block text-sm font-medium leading-8 text-gray-700") Description
+						div(class="mt-1 rounded-md")
+							textarea(name="description" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5")
+					div(class="mt-2")
+						input(type="hidden", name="_csrf", value=csrfToken)
+					div(class="mt-10")
+						span(class="block w-full rounded-md")
+							button(type="submit" class="bg-[#8c52ff] w-full flex justify-center py-2 px-4 border border-transparent text-md font-medium rounded-md text-white focus:outline-none transition duration-150 ease-in-out") Create
+					
+					footer(class="text-center mt-10").
+						Moard &copy; 2022.

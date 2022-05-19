@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    title Moard | Share messages all over the globe
+    link(rel="shortcut icon" href="/static/favicon.png")
+    link(rel="stylesheet" type="text/css" href="/static/style.css")
+    link(rel="stylesheet" href="https://unpkg.com/flowbite@1.4.3/dist/flowbite.min.css")
+  body(class="bg-slate-700 h-screen pb-14 bg-right bg-cover" style="background-image:url('/static/bg.svg');")
+    main(class="mx-auto rounded-[20px] p-10")
+      header
+        h1(class="text-3xl font-semibold") #[img(class="w-[150px]" src="/static/logo.png" alt="Moard Logo")]
+      
+      div(class="container pt-20 mx-auto flex flex-wrap flex-col md:flex-row items-center")
+        div(class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden")
+          h1(class="my-4 drop-shadow-lg text-3xl md:text-5xl text-[#eee] font-bold leading-tight text-center md:text-left slide-in-bottom-h1") Share messages all over the globe
+          p(class="leading-normal text-[#999] text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle") A message board platform to share your messages instantly.
+
+
+          div(class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in")
+            a(href="/login" class="bg-[#8c52ff] py-1 px-6 mr-2 border border-transparent rounded-md text-white focus:outline-none transition duration-150 ease-in-out") Login
+            a(href="/register" class="bg-[#8c52ff] py-1 px-4 border border-transparent rounded-md text-white focus:outline-none transition duration-150 ease-in-out") Register
+        div(class="w-full xl:w-3/5 py-6 overflow-y-hidden")
+          img(class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="/static/devices.svg")
+        
+        footer(class="text-center mt-10 text-[#eee]").
+          Moard &copy; 2022.
+
+      script(src="https://unpkg.com/flowbite@1.4.3/dist/flowbite.js")
+      script(src="/static/script.js")
+  

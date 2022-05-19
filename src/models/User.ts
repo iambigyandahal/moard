@@ -2,10 +2,12 @@ import mongoose from "mongoose";
 import { IUser } from "../types";
 
 const UserSchema = new mongoose.Schema<IUser>({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  name: { type: String, required: true },
+  username: { type: String, required: true, unique: true},
+  image: { type: String, default: "/static/user.png" },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  commentedOn: { type: [String], default: [] }
 });
 
 export default mongoose.model<IUser>("User", UserSchema);

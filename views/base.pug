@@ -1,0 +1,21 @@
+block vars
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    title Moard | #{title}
+    link(rel="shortcut icon" href="/static/favicon.png")
+    link(rel="stylesheet" href="/static/flowbite.css")
+    link(rel="stylesheet" type="text/css" href="/static/style.css")
+  body(class="bg-slate-800")
+    main(class="md:w-[60%] mx-auto rounded-[20px] px-5 py-2")
+      block main
+        include includes/header.pug
+        hr
+        block main-body
+        include includes/footer.pug
+
+      script(src="/static/flowbite.js")
+      script(src="/static/script.js")

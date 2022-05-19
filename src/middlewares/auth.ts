@@ -1,25 +1,25 @@
 import { NextFunction, Request, Response } from "express";
-import { MongoError } from "mongodb";
 import User from "../models/User";
-import { IUser, UserInterface } from "../types";
+import { UserInterface } from "../types";
 
-export const checkAuth = (req: Request, res: Response, next: NextFunction) => {
+export const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
   if(!(req.session && req.session.userId)) return next();
 
-  User.findById(req.session.userId, (err: MongoError , user: UserInterface) => {
-		if(err) {
-			return next(err);
-		}
+  try {
+    const user: UserInterface = await User.findById(req.session.userId).lean();
 
     if(!user) return next();
 
-    delete user.password;
-
+    delete user["password"];
+    delete user["commentedOn"];
+    
     req.user = user;
     res.locals.user = user;
 
     next();
-  });
+  } catch(err) {
+    return next(err);
+  }
 };
 
 export const checkLogin = (req: Request, res: Response, next: NextFunction) => {
