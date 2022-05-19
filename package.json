@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "postinstall": "npm run build",
     "start": "npm run build && node .",
     "dev": "concurrently 'tsc -w' 'postcss -w ./public/main.css -o ./public/style.css' 'nodemon .'",
     "test": "jest"
