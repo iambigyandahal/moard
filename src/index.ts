@@ -6,11 +6,22 @@ import csurf from "csurf";
 import helmet from "helmet";
 import path from "path";
 import multer from "multer";
+import mongodbSession from "connect-mongodb-session";
 
 dotenv.config();
 
+const MongoDBStore = mongodbSession(session);
 mongoose.connect(process.env.MONGO_URI!);
 mongoose.connection.on("error", (error) => console.error(error));
+
+const store = new MongoDBStore({
+  uri: process.env.MONGO_STORE!,
+  collection: 'sessions'
+});
+
+store.on('error', (error) => {
+  console.log(error);
+});
 
 const PORT = process.env.PORT || 3000;
 
@@ -23,9 +34,10 @@ app.use(helmet());
 app.use(session({
   name: "mid",
   resave: false,
+  store: store,
   cookie: {
     httpOnly: true,
-    //secure: true, 
+    secure: true, 
     sameSite: true
   },
   secret: process.env.SESSION_SECRET!,
