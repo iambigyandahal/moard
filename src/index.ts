@@ -29,7 +29,7 @@ const app = express();
 
 app.set("view engine", "pug");
 app.set("views", path.resolve(__dirname, "../views"));
-//app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 app.use(helmet());
 app.use(session({
   name: "mid",
